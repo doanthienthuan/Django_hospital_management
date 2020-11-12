@@ -1,0 +1,41 @@
+{% if user.is_staff %}
+<div class="mt-2 mb-2">
+    <h4 class="mb-3">Cập nhật sổ khám bệnh</h4>
+    <form action="#" method ='POST' class="needs-validation"> {% csrf_token%}
+        <div class="mb-3">
+            <label for="patient">Bệnh nhân</label>
+            <input type="text" id="patient" class="form-control" placeholder="Text">
+        </div>
+        <div class="mb-3">
+            <label for="email_patient">Email bệnh nhân</label>
+            <input type="email" id="email_patient" class="form-control" placeholder="you@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="doctor">Bác sĩ phụ trách</label>
+            <input type="text" id="doctor" class="form-control" placeholder="Text">
+        </div>
+        <div class="mb-3">
+            <label for="email_doctor">Email bác sĩ phụ trách</label>
+            <input type="email" id="email_doctor" class="form-control" placeholder="you@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="exam_date">Ngày khám</label>
+            <input type="date" id="exam_date" class="form-control" placeholder="yy/mm/dd">
+        </div>
+        <div class="mb-3">
+            <label for="disease_info">Thông tin bệnh</label>
+            <input type="text" id="disease_info" class="form-control" placeholder="Text">
+        </div>
+        <div class="mb-3">
+            <label for="treatment_info">Thông tin điều trị</label>
+            <input type="text" id="treatment_info" class="form-control" placeholder="Text">
+        </div>
+        <div class="mb-3">
+            <label for="fee">Viện phí</label>
+            <input type="text" id="fee" class="form-control" placeholder="69000">
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-outline-success" type="submit">Cập nhật sổ khám bệnh</button>
+    </form>
+</div>
+{ % endif %}

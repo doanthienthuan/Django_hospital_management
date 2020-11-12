@@ -1,0 +1,27 @@
+:root {
+    --main-active-color: #0366d6;
+}
+
+.container.base {
+    width: 100%;
+}
+
+@media only screen and (min-width: 993px) {
+    .container.base {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .container.base {
+        width: 80%;
+    }
+}
+
+/* .dropdown:hover > .dropdown-menu { */
+/*     display: block; */
+/* } */
+
+/* .dropdown > .dropdown-toggle:active { */
+/*     pointer-events: none; */
+/* } */

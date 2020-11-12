@@ -1,0 +1,13 @@
+<div class="section">
+    <div class="row mt-2 mb-2">
+        <div class="col-md-12">
+            <h4 class="mb-3">{% if search_key %}Searching: {{ search_key }}{% else %}Search{% endif %}</h4>
+            <form action="{% url 'phongkham:medicine-list' %}" class="input-group mb-3">
+                <input type="search" id="searchBar" class="form-control py-2" placeholder="Nhập tên thuốc hoặc id" name="q">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-success" type="button">Search</button>
+                </span>
+            </form>
+        </div>
+    </div>
+</div>

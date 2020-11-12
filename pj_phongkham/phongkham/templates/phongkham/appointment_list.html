@@ -1,0 +1,12 @@
+{% extends 'phongkham/base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_staff %}
+{% for instance in object_list %}
+    <p>
+        {{ instance.id}} - <a href="{{ instance.get_absolute_url}}"> {{ instance.patient.get_name}} </a>
+    </p>
+{% endfor %}
+{% endif %}
+{% endblock %}

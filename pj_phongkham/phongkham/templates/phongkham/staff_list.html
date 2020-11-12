@@ -1,0 +1,16 @@
+{% extends 'phongkham/base.html' %}
+{% load static %}
+
+{% block title %} - Staffs{% endblock %}
+
+{% block content %}
+{% if user.is_superuser %}
+<div class="list-group">
+    {% for staff in staffs %}
+    <a href="{% url 'phongkham:staff-detail' staff.id %}" class="list-group-item list-group-item-action">
+        {{ forloop.counter }}. {{ staff.get_name }}
+    </a>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

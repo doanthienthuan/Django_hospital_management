@@ -1,0 +1,16 @@
+{% extends 'phongkham/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="md-4">Update medicine</legend>
+            {{form.as_p}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Cập nhật</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

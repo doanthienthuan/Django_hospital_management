@@ -1,0 +1,29 @@
+
+{% extends 'phongkham/base.html' %}
+{% load static %}
+
+{% block title %} - Medicine{% endblock %}
+
+{% block content %}
+{% if user.staff %}
+<div class="mt-2 mb-4">
+    <h4 class="mb-3">Thông tin thuốc</h4>
+    <div class="card mb-3 shadow-sm">
+        <div class="card-header">{{ medicine.get_name }}</div>
+        <div class="card-body">
+            <p class="card-text">ID: {{ medicine.id }}</p>
+            <p class="card-text">category: {{ medicine.category}}</p>
+            <p class="card-text">Số lượng: {{ medicine.quantity }}</p>
+            <p class="card-text">Ngày nhập thuốc: {{ medicine.date_added }}</p>
+            <p class="card-text">Hạn sử dụng: {{ medicine.expiration }}</p>
+            <p class="card-text">Giá (VND): {{ medicine.price }}</p>
+        </div>
+    </div>
+</div>
+<a href="{% url 'phongkham:medicine-update' medicine.id %}" class="btn btn-outline-success" type="button">
+    Cập nhật 
+
+
+{% endif %}
+{% endblock %}
+

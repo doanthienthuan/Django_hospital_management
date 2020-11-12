@@ -1,0 +1,42 @@
+{% extends 'phongkham/base.html' %}
+{% load static %}
+
+{% block title %} - Patient{% endblock %}
+
+{% block content %}
+
+<div class="mt-2 mb-4">
+    <h4 class="mb-3">Thông tin bệnh nhân</h4>
+    <div class="card mb-3 shadow-sm">
+        <div class="card-header">{{ patient.get_name }}</div>
+        <div class="card-body">
+            <p class="card-text">ID: {{ patient.id }}</p>
+            <p class="card-text">Email: {{ patient.user.email }}</p>
+            <p class="card-text">Số điện thoại: {{ patient.phone_number }}</p>
+            <p class="card-text">Địa chỉ: {{ patient.address }}</p>
+            <p class="card-text">BHYT: {{ patient.BHYT }}</p>
+        </div>
+    </div>
+</div>
+<div class="mt-2 mb-4">
+    <h4 class="mb-3">Sổ khám bệnh</h4>
+    {% if matching_medical_records %}
+    {% for record in matching_medical_records %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-header">{{ record.exam_date }}</div>
+        <div class="card-body">
+            <p class="card-text">Bác sĩ: {{ record.doctor.get_name }}</p>
+            <p class="card-text">Thông tin bệnh: {{ record.disease_info }}</p>
+            <p class="card-text">Thông tin điều trị: {{ record.treatment_info }}</p>
+            <p class="card-text">Viện phí: {{ record.fee }}đ</p>
+            {% for test in record.test %}
+            <p class="card-text">Xét nghiệm: {{ test.name }} | {{test.price}}đ</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<a href="{% url 'phongkham:medical-record-form' %}" class="btn btn-outline-success" type="button">
+    Cập nhật sổ khám bệnh
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'phongkham/base.html' %}
+{% load static %}
+
+{% block title %} - Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+{% if user.is_staff %}
+<h1>Chúc bạn một ngày làm việc hiệu quả {{user.get_full_name}} </h1>
+<h4 class="mb-3">Quản lý bệnh nhân</h4>
+<div class="row mt-2 mb-2">
+    <div class="col-md-3">
+        <div class="card mb-3 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/lookup.png' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:patient-list' %}" class="my-0 font-weight-normal stretched-link">
+                    Thông tin bệnh nhân
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-4 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/create.png' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:create-account' %}" class="my-0 font-weight-normal stretched-link">
+                    Tạo tài khoản bệnh nhân
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-4 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/medicine.jpg' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:medicine-list' %}" class="my-0 font-weight-normal stretched-link">
+                    Quản lý kho thuốc
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-4 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/donthuoc.jpg' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:create-prescription' %}" class="my-0 font-weight-normal stretched-link">
+                    Đơn thuốc
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-3 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/medicine.png' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:patient-list' %}" class="my-0 font-weight-normal stretched-link">
+                    Bán thuốc
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% if user.is_superuser %}
+<h4 class="mb-3">Quản lý nhân viên</h4>
+<div class="row mt-2 mb-2">
+    <div class="col-md-3">
+        <div class="card mb-3 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/staff.png' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:staff-list' %}" class="my-0 font-weight-normal stretched-link">
+                    Thông tin nhân viên
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-3 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/doctor.png' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:doctor-list' %}" class="my-0 font-weight-normal stretched-link">
+                    Thông tin bác sĩ
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<h1>Xin chào bệnh nhân {{user.get_full_name}} tôi có thể giúp gì cho bạn ?</h1>
+<h4 class="mb-3">Bệnh nhân</h4>
+<div class="row mt-2 mb-2">
+    <div class="col-md-3">
+        <div class="card mb-3 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/booking.png' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:create-appointment' %}" class="my-0 font-weight-normal stretched-link">
+                    Lấy số thứ tự phòng khám
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-3 shadow-sm text-center">
+            <img src="{% static 'phongkham/img/patient_info.jpeg' %}" alt="Card image" class="card-img-top">
+            <div class="card-header">
+                <a href="{% url 'phongkham:patient-detail' id_patient %}" class="my-0 font-weight-normal stretched-link">
+                    Thông tin và lịch sử khám bệnh
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+{% endblock %}

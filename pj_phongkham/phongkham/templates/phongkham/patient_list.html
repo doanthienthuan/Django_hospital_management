@@ -1,0 +1,25 @@
+{% extends 'phongkham/base.html' %}
+{% load static %}
+
+{% block title %} - Patients{% endblock %}
+
+{% block content %}
+{% include 'phongkham/search_bar.html' %}
+
+{% if matching_patients %}
+<div class="list-group">
+    {% for patient in matching_patients %}
+    <a href="{% url 'phongkham:patient-detail' patient.id %}" class="list-group-item list-group-item-action">
+        {{patient.get_id}} - {{ patient.get_name }}
+    </a>
+    {% comment %} <div class="card mb-4"> {% endcomment %}
+    {% comment %}     <h5 class="card-header"> {{ patient.get_name }}</h5> {% endcomment %}
+    {% comment %}     <div class="card-body"> {% endcomment %}
+    {% comment %}         <p class="card-text">{{ patient.user.email }}</p> {% endcomment %}
+    {% comment %}         </div> {% endcomment %}
+    {% comment %}     </div> {% endcomment %}
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

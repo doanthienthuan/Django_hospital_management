@@ -1,0 +1,19 @@
+{% extends 'phongkham/base.html' %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %} - Medical record form{% endblock %}
+
+{% block content %}
+{% if user.is_staff %}
+<div class="mt-2 mb-2">
+    <h4 class="mb-3">Cập nhật sổ khám bệnh</h4>
+    <form action="" class="needs-validation" method="POST">
+        {% csrf_token %}
+        {{ medical_record_form|crispy }}
+        <button class="btn btn-outline-success" type="submit">Cập nhật sổ khám bệnh</button>
+    </form>
+</div>
+{% endif %}
+{% endblock %}

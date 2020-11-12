@@ -1,0 +1,38 @@
+{% extends 'phongkham/base.html' %}
+{% load static %}
+
+{% block title %} - Doctor{% endblock %}
+
+{% block content %}
+{% if user.is_superuser %}
+<div class="mt-2 mb-4">
+    <h4 class="mb-3">Thông tin bác sĩ</h4>
+    <div class="card mb-3 shadow-sm">
+        <div class="card-header">{{ doctor.get_name }}</div>
+        <div class="card-body">
+            <p class="card-text">Email: {{ doctor.user.email }}</p>
+            <p class="card-text">Số điện thoại: {{ doctor.phone_number }}</p>
+            <p class="card-text">Vị trí: {{ doctor.position }}</p>
+            <p class="card-text">Khoa: {{ doctor.department }}</p>
+            <p class="card-text">Ngày vào làm việc: {{ doctor.date_joined }}</p>
+        </div>
+    </div>
+</div>
+<div class="mt-2 mb-4">
+    <h4 class="mb-3">Lịch sử khám bệnh</h4>
+    {% if matching_medical_records %}
+    {% for record in matching_medical_records %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-header">{{ record.exam_date }}</div>
+        <div class="card-body">
+            <p class="card-text">Bệnh nhân: {{ record.patient.get_name }}</p>
+            <p class="card-text">Thông tin bệnh: {{ record.disease_info }}</p>
+            <p class="card-text">Thông tin điều trị: {{ record.treatment_info }}</p>
+            <p class="card-text">Viện phí: {{ record.fee }}đ</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}
